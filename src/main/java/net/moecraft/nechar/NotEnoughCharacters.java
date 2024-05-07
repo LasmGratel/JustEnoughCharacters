@@ -9,8 +9,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.vfyjxf.nechar.NechCommand;
 import net.vfyjxf.nechar.NechConfig;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import net.vfyjxf.nechar.core.NechCorePlugin;
 
 import java.io.File;
 import java.util.function.BiConsumer;
@@ -20,7 +19,6 @@ import java.util.function.BiConsumer;
 public class NotEnoughCharacters {
     public static final String ID = "nechar";
     public static final String VERSION = NotEnoughCharacters.class.getPackage().getImplementationVersion();
-    public static final Logger logger = LogManager.getLogger("NotEnoughCharacters");
 
     public static final PinIn CONTEXT = new PinIn(new CustomDictLoader()).config().accelerate(true).commit();
 
@@ -61,7 +59,7 @@ public class NotEnoughCharacters {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        logger.info("Not Enough Characters - v" + VERSION);
+        NechCorePlugin.logger.info("Not Enough Characters - v" + VERSION);
         NechConfig.loadConfig(new File(Minecraft.getMinecraft().mcDataDir, "config/NotEnoughCharacters.cfg"));
         onConfigChange();
     }

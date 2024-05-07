@@ -5,6 +5,7 @@
 
 package net.vfyjxf.nechar.transform;
 
+import net.vfyjxf.nechar.transform.transformers.TransformerNEI;
 import net.vfyjxf.nechar.transform.transformers.TransformerRegExp;
 import net.vfyjxf.nechar.transform.transformers.TransformerString;
 
@@ -17,6 +18,7 @@ public class TransformerRegistry {
     static {
         configurables.add(new TransformerString());
         configurables.add(new TransformerRegExp());
+        transformers.add(new TransformerNEI());
         transformers.addAll(configurables);
     }
 

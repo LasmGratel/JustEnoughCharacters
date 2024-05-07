@@ -2,12 +2,13 @@ package net.moecraft.nechar;
 
 import codechicken.nei.api.API;
 import codechicken.nei.api.IConfigureNEI;
+import net.vfyjxf.nechar.core.NechCorePlugin;
 
 public class NEINecharConfig implements IConfigureNEI {
     @Override
     public void loadConfig() {
         API.addSearchProvider(new NecharSearchProvider());
-        NotEnoughCharacters.logger.info("search provider added!");
+        NechCorePlugin.logger.info("search provider added!");
     }
 
     @Override

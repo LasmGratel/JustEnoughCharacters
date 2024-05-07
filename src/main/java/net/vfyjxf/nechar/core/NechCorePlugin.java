@@ -5,9 +5,13 @@ import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
 import net.vfyjxf.nechar.transform.TransformerRegistry;
 
 import java.util.Map;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 public class NechCorePlugin implements IFMLLoadingPlugin, IFMLCallHook {
+
+    public static final Logger logger = LogManager.getLogger("NotEnoughCharacters");
     public static boolean INITIALIZED = false;
 
     @Override

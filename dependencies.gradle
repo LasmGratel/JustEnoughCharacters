@@ -1,0 +1,14 @@
+// Add your dependencies here
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    api('com.github.GTNewHorizons:CodeChickenLib:1.2.1:dev')
+    api('com.github.GTNewHorizons:CodeChickenCore:1.2.1:dev')
+    //api('com.github.GTNewHorizons:NotEnoughItems:2.6.0-GTNH:dev')
+    api files('libs/NotEnoughItems-2.6.0-GTNH-master.1+0ed052e7dd-dirty-dev.jar')
+    shadowImplementation files('libs/PinIn-1.6.0-all.jar')
+}

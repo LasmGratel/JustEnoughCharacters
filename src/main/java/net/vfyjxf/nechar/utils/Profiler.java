@@ -2,7 +2,7 @@ package net.vfyjxf.nechar.utils;
 
 import com.google.gson.Gson;
 import net.minecraftforge.common.MinecraftForge;
-import net.moecraft.nechar.NotEnoughCharacters;
+import net.vfyjxf.nechar.core.NechCorePlugin;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.AbstractInsnNode;
@@ -63,13 +63,13 @@ public class Profiler {
                 try (InputStream is = f.getInputStream(entry)) {
                     long size = entry.getSize() + 4;
                     if (size > Integer.MAX_VALUE) {
-                        NotEnoughCharacters.logger.info("Class file " + entry.getName()
+                        NechCorePlugin.logger.info("Class file " + entry.getName()
                                 + " in jar file " + f.getName() + " is too large, skip.");
                     } else {
                         scanClass(is, methodsString::add, methodsRegExp::add, methodsSuffix::add, methodsStrsKt::add);
                     }
                 } catch (IOException e) {
-                    NotEnoughCharacters.logger.info("Fail to read file " + entry.getName()
+                    NechCorePlugin.logger.info("Fail to read file " + entry.getName()
                             + " in jar file " + f.getName() + ", skip.");
                 }
             } else if (entry.getName().equals("mcmod.info")) {
@@ -81,7 +81,7 @@ public class Profiler {
                         ret.mods = new ModContainer[]{gson.fromJson(new InputStreamReader(is), ModContainer.class)};
                     }
                 } catch (Exception e) {
-                    NotEnoughCharacters.logger.info("Fail to read mod info in jar file " + f.getName() + ", skip.");
+                    NechCorePlugin.logger.info("Fail to read mod info in jar file " + f.getName() + ", skip.");
                 }
             }
         });
@@ -102,7 +102,7 @@ public class Profiler {
             classReader.accept(classNode, 0);
         } catch (Exception e) {
             if (classNode.name != null) {
-                NotEnoughCharacters.logger.info("File decoding of class " + classNode.name + " failed. Try to continue.");
+                NechCorePlugin.logger.info("File decoding of class " + classNode.name + " failed. Try to continue.");
             } else {
                 throw new IOException(e);
             }

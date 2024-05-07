@@ -5,6 +5,7 @@ import net.minecraftforge.common.config.Configuration;
 import net.moecraft.nechar.NotEnoughCharacters;
 
 import java.io.File;
+import net.vfyjxf.nechar.core.NechCorePlugin;
 
 
 public class NechConfig {
@@ -52,6 +53,8 @@ public class NechConfig {
             "appeng.client.gui.implementations.GuiInterfaceTerminal:itemStackMatchesSearchTerm",
             "com.glodblock.github.client.gui.GuiInterfaceWireless$InterfaceWirelessList:update"
     };
+    public static boolean enableNEI = true;
+    public static boolean enableForceQuote = false;
 
     public static void loadConfig(File configFile) {
         Configuration config = new Configuration(configFile);
@@ -92,10 +95,12 @@ public class NechConfig {
         try{
             KeyboardType = Spell.valueOf(keyboardTypeString.toUpperCase());
         } catch (IllegalArgumentException e) {
-            NotEnoughCharacters.logger.error("Invalid keyboard type: " + keyboardTypeString);
+            NechCorePlugin.logger.error("Invalid keyboard type: " + keyboardTypeString);
             //use default value
             KeyboardType = Spell.QUANPIN;
         }
+        enableNEI = config.get("general", "EnableNEI", true, "Enable NEI support (ensure to use version with suffix tree)").getBoolean();
+        enableForceQuote = config.get("general", "EnableForceQuote", true, "Set to true to disable JEI keyword separation").getBoolean();
 
         if (config.hasChanged()) config.save();
     }

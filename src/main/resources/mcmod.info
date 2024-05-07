@@ -1,13 +1,13 @@
 [{
-  "modid": "${mod_id}",
-  "name": "${mod_name}",
-  "description": "${mod_description}",
-  "version": "${mod_version}",
-  "mcversion": "${mc_version}",
+  "modid": "${modId}",
+  "name": "${modName}",
+  "description": "Enhanced NEI search and provide PinYin search for other mods",
+  "version": "${modVersion}",
+  "mcversion": "${minecraftVersion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["${mod_author}"],
-  "credits": "${mod_credits}",
+  "authorList": ["Balthild", "vfyjxf_"],
+  "credits": "Towdium and Balthild",
   "screenshots": [],
   "dependencies": []
 }]
